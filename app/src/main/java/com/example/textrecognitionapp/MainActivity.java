@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         List<FirebaseVisionText.Block> blockList = firebaseVisionText.getBlocks();
         if (blockList.size() == 0)
         {
-            Toast.makeText(MainActivity.this,"Yüklediğiniz resimde okuancak yazı bulunamadı..",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Yüklediğiniz resimde okunacak yazı bulunamadı..",Toast.LENGTH_SHORT).show();
         }
         else
             {
