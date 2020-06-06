@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //tanımlamalar
         captureImageBtn = findViewById(R.id.capture_image_btn);
         detectTextBtn = findViewById(R.id.detect_text_image_btn);
         imageView= findViewById(R.id.image_view);
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
         }
     }
@@ -102,8 +103,15 @@ public class MainActivity extends AppCompatActivity {
             {
                 for(FirebaseVisionText.Block block : firebaseVisionText.getBlocks())
                 {
-                    String text = block.getText();
-                    textView.setText(text);
+                    try
+                    {
+                        String text = block.getText();
+                        textView.setText(text);
+                    }
+                  catch(Error error)
+                    {
+                        Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_LONG);
+                    }
                 }
             }
     }
